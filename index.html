@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ONE bouldering 記録シート 9/30–10/25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#E9ECEF; --paper:#FFFFFF; --ink:#1C1F22; --sub:#6A7178; --line:#C9CED3;
+  --c-orange:#E8731C; --c-black:#24272A; --c-red:#D3242E; --c-blue:#2F6FC4;
+  --c-teal:#2E9C8A; --c-olive:#6F9A2E; --c-sky:#3E9ED6; --c-yellow:#D9A400; --c-purple:#6B4FB8;
+  --tag-pink:#E58BC4; --tag-orange:#F08A24; --tag-red:#DD3B3B; --tag-blue:#2F62C4;
+  --tag-green:#3F9A3A; --tag-sky:#3DB0E6; --tag-purple:#7A5CC9; --tag-black:#24272A; --tag-plain:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181B; --paper:#1F2327; --ink:#EEF0F2; --sub:#9AA2AA; --line:#3A4046;
+    --c-black:#C9CED3; --tag-black:#3A4046; --tag-plain:#2A2F34;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181B; --paper:#1F2327; --ink:#EEF0F2; --sub:#9AA2AA; --line:#3A4046;
+  --c-black:#C9CED3; --tag-black:#3A4046; --tag-plain:#2A2F34;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:inherit;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+  -webkit-tap-highlight-color:transparent;
+}
+main{max-width:640px; margin:0 auto; padding:18px 14px 28px;}
+header{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:14px;}
+h1{margin:0; font-family:"Barlow Condensed","Zen Kaku Gothic New",sans-serif; font-weight:700; font-size:30px; line-height:1; letter-spacing:.01em;}
+h1 small{display:block; font-family:"Zen Kaku Gothic New",sans-serif; font-size:12px; font-weight:500; color:var(--sub); margin-top:6px; letter-spacing:0;}
+.score{text-align:right; font-family:"Barlow Condensed",sans-serif; line-height:1;}
+.score b{font-size:44px; font-weight:700;}
+.score span{font-size:20px; color:var(--sub); font-weight:500;}
+.bar{height:6px; background:var(--line); border-radius:3px; overflow:hidden; margin-bottom:16px;}
+.bar i{display:block; height:100%; width:0; background:var(--ink); transition:width .25s ease;}
+
+.grid{display:grid; grid-template-columns:repeat(5,1fr); gap:6px;}
+.cell{
+  position:relative; appearance:none; border:2px solid var(--line); border-radius:8px;
+  background:var(--paper); color:var(--hc); padding:20px 4px 8px; min-height:92px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  cursor:pointer; font:inherit; transition:background-color .15s, color .15s, border-color .15s, transform .08s;
+}
+.cell:active{transform:scale(.96);}
+.cell:focus-visible{outline:3px solid var(--ink); outline-offset:2px;}
+.num{font-family:"Barlow Condensed",sans-serif; font-weight:700; font-size:34px; line-height:.95;}
+.grade{font-family:"Barlow Condensed",sans-serif; font-weight:500; font-size:20px; line-height:1; margin-top:2px;}
+.tag{
+  position:absolute; top:0; left:0; right:0; height:16px; border-radius:6px 6px 0 0;
+  font-family:"Barlow Condensed",sans-serif; font-size:12px; font-weight:700; line-height:16px;
+  background:var(--tg); color:#fff;
+}
+.tag.plain{color:var(--ink); border-bottom:1px solid var(--line);}
+.cell.done{background:var(--hc); color:var(--paper); border-color:var(--hc);}
+.cell.done .num::after{content:""; }
+.cell.done::after{
+  content:"✓"; position:absolute; bottom:4px; right:6px; font-size:13px; font-weight:700; color:var(--paper);
+}
+.cell.dark-num{background:var(--c-black); color:var(--paper);}
+.cell.dark-num.done{background:var(--paper); color:var(--c-black); border-color:var(--c-black);}
+.cell.dark-num.done::after{color:var(--c-black);}
+
+.legend{margin:18px 2px 0; font-size:12.5px; color:var(--sub); line-height:1.8;}
+.legend p{margin:0;}
+.actions{display:flex; justify-content:flex-end; margin-top:16px;}
+.reset{
+  appearance:none; background:none; border:1px solid var(--line); color:var(--sub);
+  font:inherit; font-size:13px; padding:8px 14px; border-radius:8px; cursor:pointer;
+}
+.reset:focus-visible{outline:3px solid var(--ink); outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){ .cell,.bar i{transition:none;} .cell:active{transform:none;} }
+@media (min-width:560px){ .grid{grid-template-columns:repeat(10,1fr);} .num{font-size:30px;} .cell{min-height:84px;} }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>ONE bouldering<small>PERADRA 横浜　2026.9.30 – 10.25</small></h1>
+    <div class="score"><b id="count">0</b><span> / 40</span></div>
+  </header>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="legend">
+    <p>B = Basic課題・時間制限 30分</p>
+    <p>T = Division Tryout課題・時間制限 1時間</p>
+    <p>1〜40 = Ranking課題・時間制限なし</p>
+    <p>タップで完登、もう一度タップで取り消し。</p>
+  </div>
+  <div class="actions"><button class="reset" id="reset" type="button">記録をすべて消す</button></div>
+</main>
+
+<script>
+// [番号, グレード, 番号の色, タグ, タグ色]
+const P = [
+  [1,"A","orange"],[2,"B","black","T-1","pink"],[3,"B","black"],[4,"A","red"],[5,"A","red","T-2","pink"],
+  [6,"D","red"],[7,"A","blue"],[8,"B","blue","T-3","orange"],[9,"C","blue"],[10,"D","blue","B-1","black"],
+  [11,"F","teal"],[12,"E","teal","T-4","orange"],[13,"A","teal"],[14,"B","teal","T-5","plain"],[15,"C","teal"],
+  [16,"C","teal"],[17,"D","teal"],[18,"D","teal","T-6","plain"],[19,"D","teal","B-2","black"],[20,"A","teal","T-7","red"],
+  [21,"B","olive"],[22,"C","olive","B-3","black"],[23,"D","olive"],[24,"E","olive"],[25,"F","olive"],
+  [26,"F","olive","T-8","red"],[27,"A","blue"],[28,"C","sky","T-9","purple"],[29,"D","sky"],[30,"E","sky"],
+  [31,"F","blue","T-10","blue"],[32,"E","blue","B-4","black"],[33,"C","yellow","T-11","green"],[34,"D","yellow"],[35,"E","yellow","B-5","black"],
+  [36,"E","yellow"],[37,"D","yellow","T-12","green"],[38,"E","purple","T-14","sky"],[39,"F","purple","T-13","sky"],[40,"F","black",null,null,true]
+];
+const KEY = "peradra-one-2026-09-30";
+let done = new Set();
+try { const s = localStorage.getItem(KEY); if (s) done = new Set(JSON.parse(s)); } catch(e) {}
+
+const grid = document.getElementById("grid");
+const countEl = document.getElementById("count");
+const barEl = document.getElementById("bar");
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+function update(){
+  countEl.textContent = done.size;
+  barEl.style.width = (done.size / 40 * 100) + "%";
+}
+
+P.forEach(([n, g, c, tag, tc, darkCell]) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "cell" + (darkCell ? " dark-num" : "");
+  b.style.setProperty("--hc", `var(--c-${c})`);
+  b.innerHTML =
+    (tag ? `<span class="tag ${tc === "plain" ? "plain" : ""}" style="--tg:var(--tag-${tc})">${tag}</span>` : "") +
+    `<span class="num">${n}</span><span class="grade">${g}</span>`;
+  const set = () => {
+    const on = done.has(n);
+    b.classList.toggle("done", on);
+    b.setAttribute("aria-pressed", on);
+    b.setAttribute("aria-label", `${n}番 グレード${g}${tag ? " " + tag : ""} ${on ? "完登" : "未完登"}`);
+  };
+  b.addEventListener("click", () => {
+    done.has(n) ? done.delete(n) : done.add(n);
+    set(); save(); update();
+  });
+  set();
+  grid.appendChild(b);
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("完登記録をすべて消しますか？")) return;
+  done.clear(); save();
+  grid.querySelectorAll(".cell").forEach(el => { el.classList.remove("done"); el.setAttribute("aria-pressed", false); });
+  update();
+});
+update();
+</script>
+</body>
+</html>
